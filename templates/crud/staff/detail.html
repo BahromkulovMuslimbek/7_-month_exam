@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Detail</title>
+    <link rel="stylesheet" href="{% static 'style_staff.css' %}">
+</head>
+
+<body>
+    <h1>{{ queryset.username }}'s Details</h1>
+    <p><strong>Phone:</strong> {{ queryset.phone }}</p>
+    <p><strong>Job Title:</strong> {{ queryset.job_title }}</p>
+    <p><strong>Address:</strong> {{ queryset.adress }}</p>
+    <a href="{% url 'staff:listStaff' %}">Back to List</a>
+
+</body>
+</html>

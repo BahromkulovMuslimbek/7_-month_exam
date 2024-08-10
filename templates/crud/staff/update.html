@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Update</title>
+    <link rel="stylesheet" href="{% static 'style_staff.css' %}">
+</head>
+
+<body>
+    <h1>Update Staff</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ data.username }}"><br>
+
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" value="{{ data.phone }}"><br>
+
+        <label for="job_title">Job Title:</label>
+        <input type="text" id="job_title" name="job_title" value="{{ data.job_title }}"><br>
+
+        <label for="adress">Address:</label>
+        <textarea id="adress" name="adress">{{ data.adress }}</textarea><br>
+
+        <button type="submit">Save</button>
+    </form>
+    <a href="{% url 'staff:listStaff' %}">Back to List</a>
+    
+</body>
+</html>

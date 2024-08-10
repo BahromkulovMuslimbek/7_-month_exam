@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Attendance</title>
+    <link rel="stylesheet" href="{% static 'style_staff.css' %}">
+</head>
+
+<body>
+    <h1>Create Attendance</h1>
+    <form method="post" action="{% url 'attendance:createAttendance' %}">
+        {% csrf_token %}
+        <div>
+            <label for="staff_id">Staff</label>
+            <select id="staff_id" name="staff_id">
+                {% for staff in staffs %}
+                <option value="{{ staff.id }}">{{ staff.username }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>
+            <label for="status">Status</label>
+            <select id="status" name="status">
+                <option value="Present">Present</option>
+                <option value="Absent">Absent</option>
+            </select>
+        </div>
+        <div>
+            <label for="date">Date</label>
+            <input type="date" id="date" name="date">
+        </div>
+        <div>
+            <label for="time">Time</label>
+            <input type="time" id="time" name="time">
+        </div>
+        <button type="submit">Create</button>
+    </form>
+    <a href="{% url 'attendance:listAttendance' %}">Back to List</a>
+</body>
+</html>

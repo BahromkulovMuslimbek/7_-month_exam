@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Profiles</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'style_staff.css' %}">
+</head>
+
+<body>
+    <div class="profile-list">
+        <h1>User Profiles</h1>
+        {% for profile in profiles %}
+        <div class="profile-info">
+            <h2>{{ profile.full_name }}</h2>
+            <img src="{{ profile.img.url }}" alt="Profile Image">
+            <ul>
+                <li><strong>Phone:</strong> {{ profile.phone }}</li>
+                <li><strong>Address:</strong> {{ profile.address }}</li>
+            </ul>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+
+</html>

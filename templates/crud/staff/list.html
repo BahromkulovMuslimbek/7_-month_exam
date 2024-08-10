@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff List</title>
+    <link rel="stylesheet" href="{% static 'style_staff.css' %}">
+</head>
+
+<body>
+    <h1>Staff List</h1>
+    <a href="{% url 'staff:createStaff' %}">Add New Staff</a>
+    <ul>
+        {% for staff in queryset %}
+            <li>
+                {{ staff.username }} ({{ staff.job_title }})
+                <a href="{% url 'staff:detailStaff' staff.id %}">View</a> | 
+                <a href="{% url 'staff:updateStaff' staff.id %}">Edit</a> | 
+                <a href="{% url 'staff:deleteStaff' staff.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'index' %}">Home</a>
+
+</body>
+</html>
