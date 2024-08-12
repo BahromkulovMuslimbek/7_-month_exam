@@ -1,11 +1,13 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
-from django.contrib.auth.decorators import login_required
 from . import models
 
 
 def index(request):
+    if not request.user.is_authenticated:
+        return redirect('login')
+    
     profiles = models.Profile.objects.all()
     context = {
         'profiles': profiles,
@@ -23,7 +25,7 @@ def loginView(request):
             login(request, user)
             return redirect('index')
         else:
-            return  redirect('login')
+            return redirect('login')
     return render(request, 'login.html')
 
 
